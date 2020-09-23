@@ -1,3 +1,3 @@
 # appid
 
-Basic application ID
+Journeyman's attempt to label applications.
