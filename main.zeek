@@ -19,10 +19,10 @@ global nets: set[subnet] = set();
 # what the app is
 global netinfo: table[subnet] of Val;
 
-const serviceMap: table[string] of string = ["pop3" = "email", "imap"= "email", "bittorrent" = "file-transfer",
-    "gnutella" = "file-transfer", "ftp" = "file-transfer", "arp"="infra", "dhcp"="infra", "dnp3"="infra",
-    "dns" = "infra", "irc" = "chat", "modbus" = "infra", "mqtt" = "infra", "ntp"="infra", "radius"="infra",
-    "sip"="chat", "smtp"="email", "syslog"="infra", "vxlan"="infra", "xmpp"="inra"];
+const serviceMap: table[string] of string = [["pop3"] = "email", ["imap"]= "email", ["bittorrent"] = "file-transfer",
+    ["gnutella"] = "file-transfer", ["ftp"] = "file-transfer", ["arp"]="infra", ["dhcp"]="infra", ["dnp3"]="infra",
+    ["dns"] = "infra", ["irc"] = "chat", ["modbus"] = "infra", ["mqtt"] = "infra", ["ntp"]="infra", ["radius"]="infra",
+    ["sip"]="chat", ["smtp"]="email", ["syslog"]="infra", ["vxlan"]="infra", ["xmpp"]="inra"];
 
 function my_effective_domain(s:string): string
     {
