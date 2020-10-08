@@ -24,12 +24,12 @@ event connection_state_remove(c: connection)
 	
     if ( c?$id && c$conn$id$orig_h in nets)
         {
-        c$conn$app = netinfo[c$id$orig_h];
+        c$conn$app = netinfo[c$id$orig_h]$name;
         return;
         }
     if ( c?$id && c$id$resp_h in nets)
 	{
-      	c$conn$app = netinfo[c$id$resp_h];
+      	c$conn$app = netinfo[c$id$resp_h]$name;
         return;
         }
 
