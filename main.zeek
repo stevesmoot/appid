@@ -25,5 +25,9 @@ event connection_state_remove(c: connection)
 
 event zeek_init()
       {
-      print fmt("what is set if lookup fails? %s", netinfo[1.1.1.1]);
+      if ( |nets| != |netinfo| )
+         {
+         print "nets and netinfo entries must match";
+         exit();
+         } 
       }
