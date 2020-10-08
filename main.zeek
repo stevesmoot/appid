@@ -51,10 +51,4 @@ event zeek_init()
     Input::add_table([$source="names.in",
         $idx=Idx, $val=Val, $name="names", $destination=netinfo,
         $mode=Input::REREAD]);      
-
-    if ( |nets| != |netinfo| )
-        {
-        print "nets and netinfo entries must match";
-        exit(1);
-        } 
     }
