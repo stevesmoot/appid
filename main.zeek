@@ -19,6 +19,13 @@ global nets: set[subnet] = set();
 # what the app is
 global netinfo: table[subnet] of Val;
 
+function my_effective_domain(s:string): string
+    {
+    local ed=DomainTLD::effective_domain(s);
+    local tld=DomainTLD::effective_tld(s);
+    return ed[0:|ed|-|tld|]-1;
+    }
+
 # sort out what we can deduce!
 event connection_state_remove(c: connection)
     {
@@ -36,7 +43,12 @@ event connection_state_remove(c: connection)
         }
     if ( c?$http && c$http?$host )
 	{
-      	c$conn$app = DomainTLD::effective_domain(c$http$host);
+      	c$conn$app = my_effective_domain(c$http$host);
+        return;
+        }
+    if ( c?$ssl && c$ssl?$server_name )
+	{
+      	c$conn$app = my_effective_domain(c$ssl$server_name);
         return;
         }
     }
