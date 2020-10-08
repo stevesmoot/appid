@@ -6,9 +6,9 @@ redef record Conn::Info += { app:string &optional &log; };
 
 # look for this stuff
 #   networks that match at all
-global nets: set[subnet] = set(192.168.211.1/32);
+global nets: set[subnet] = set();
 # what the app is
-global netinfo: table[subnet] of string = { [192.168.211.1/32] = "Hello World"};
+global netinfo: table[subnet] of Val;
 
 type Idx: record {
     ips: subnet;
