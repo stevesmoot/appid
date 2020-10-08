@@ -2,6 +2,8 @@
 
 module APPID;
 
+@load domain-tld/__load__.bro
+
 redef record Conn::Info += { app:string &optional &log; };
 
 type Idx: record {
@@ -34,7 +36,7 @@ event connection_state_remove(c: connection)
         }
     if ( c?$http && c$http?$host )
 	{
-      	c$conn$app = c$http$host;
+      	c$conn$app = DomainTLD::effective_domain(c$http$host);
         return;
         }
     }
