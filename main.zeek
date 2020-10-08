@@ -23,7 +23,7 @@ function my_effective_domain(s:string): string
     {
     local ed=DomainTLD::effective_domain(s);
     local tld=DomainTLD::effective_tld(s);
-    return ed[0:|ed|-|tld|]-1;
+    return ed[0:|ed|-|tld|-1];
     }
 
 # sort out what we can deduce!
