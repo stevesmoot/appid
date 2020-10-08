@@ -32,7 +32,11 @@ event connection_state_remove(c: connection)
       	c$conn$app = netinfo[c$id$resp_h]$name;
         return;
         }
-
+    if ( c?$http && c$http?$host )
+	{
+      	c$conn$app = c$http$host;
+        return;
+        }
     }
 
 event Input::end_of_data(name: string, source: string)
