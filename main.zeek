@@ -9,7 +9,7 @@ type Netinfo: record {net:addr; app: string; };
 #   networks that match at all
 global nets: set[subnet] = set(192.168.211.1/32);
 # what the app is
-global netinfo: table[subnet] of string = { [192.168.211.1/32] = "Hello World"};
+global netinfo: table[subnet] of string = { [192.168.211.1/32] = "Hello World", [1.1.1.1]="die"};
 
 # sort out what we can deduce!
 event connection_state_remove(c: connection)
