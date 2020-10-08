@@ -20,8 +20,10 @@ event connection_state_remove(c: connection)
       	 c$conn$app = netinfo[c$id$orig_h];
       } else if ( c?$id && c$id$resp_h in nets) {
       	 c$conn$app = netinfo[c$id$resp_h];
-	}
       }
+      }
+
 event zeek_init()
       {
+      print fmt("what is set if lookup fails? %s", netinfo[1.1.1.1]);
       }
