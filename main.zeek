@@ -56,9 +56,9 @@ event connection_state_remove(c: connection)
       	c$conn$app = my_effective_domain(c$ssl$server_name);
         return;
         }
-    if ( c?$service && c$service in serviceMap )
+    if ( c$conn?$service && c$conn$service in serviceMap )
 	{
-	c$conn$app = serviceMap[c$service];
+	c$conn$app = serviceMap[c$conn$service];
 	return;
 	}
     }
