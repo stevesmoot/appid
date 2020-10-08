@@ -19,6 +19,11 @@ global nets: set[subnet] = set();
 # what the app is
 global netinfo: table[subnet] of Val;
 
+const serviceMap: table[string] of string = ["pop3" = "email", "imap"= "email", "bittorrent" = "file-transfer",
+    "gnutella" = "file-transfer", "ftp" = "file-transfer", "arp"="infra", "dhcp"="infra", "dnp3"="infra",
+    "dns" = "infra", "irc" = "chat", "modbus" = "infra", "mqtt" = "infra", "ntp"="infra", "radius"="infra",
+    "sip"="chat", "smtp"="email", "syslog"="infra", "vxlan"="infra", "xmpp"="inra"];
+
 function my_effective_domain(s:string): string
     {
     local ed=DomainTLD::effective_domain(s);
@@ -51,6 +56,11 @@ event connection_state_remove(c: connection)
       	c$conn$app = my_effective_domain(c$ssl$server_name);
         return;
         }
+    if ( c?$service && c$service in serviceMap )
+	{
+	c$conn$app = serviceMap[c$service];
+	return;
+	}
     }
 
 event Input::end_of_data(name: string, source: string)
