@@ -28,6 +28,6 @@ event zeek_init()
       if ( |nets| != |netinfo| )
          {
          print "nets and netinfo entries must match";
-         exit();
+         exit(1);
          } 
       }
