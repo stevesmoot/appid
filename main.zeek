@@ -4,18 +4,18 @@ module APPID;
 
 redef record Conn::Info += { app:string &optional &log; };
 
-# look for this stuff
-#   networks that match at all
-global nets: set[subnet] = set();
-# what the app is
-global netinfo: table[subnet] of Val;
-
 type Idx: record {
     ips: subnet;
     };
 type Val: record {
     name: string;
     };
+
+# look for this stuff
+#   networks that match at all
+global nets: set[subnet] = set();
+# what the app is
+global netinfo: table[subnet] of Val;
 
 # sort out what we can deduce!
 event connection_state_remove(c: connection)
