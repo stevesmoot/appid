@@ -3,6 +3,7 @@ script_dir = .
 build_command = make all
 description = Leverage nDPI and other info to make informed guess at the application for a connection.
 credits = Steve Smoot <smoot@corelight.com>
+tags = nDPI application
 depends =
      bro/sethhall/domain-tld *
 
