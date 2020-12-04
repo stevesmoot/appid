@@ -4,5 +4,5 @@ build_command = make all
 description = Leverage nDPI and other info to make informed guess at the application for a connection.
 credits = Steve Smoot <smoot@corelight.com>
 depends =
-     zeek/sethhall/domain-tld *
+     bro/sethhall/domain-tld *
 
